@@ -28,10 +28,7 @@ export default function HomeScreen() {
         throw new Error(`Failed to fetch recipes: ${res.statusText}`);
       }
       const data = await res.json();
-      console.log('Fetched recipes:', data); // Debug log
-      console.log('*** RAW DATA FETCHED FROM API: ***');
-      console.log(JSON.stringify(data, null, 2)); // Use stringify for readability of JSON objects
-      console.log('**********************************');
+      console.log('Fetched recipes:'); // Debug log
 
       setRecipes(data);
       setError(null); // Clear any previous errors

@@ -21,7 +21,7 @@ export default function HomeScreen() {
         <View style={styles.contentContainer}>
           <Text style={styles.subheader}>What do you want to make this week? </Text>
           <Image
-            source={require('@/assets/images/familienbild.jpg')}
+            source={require('@/assets/images/familienbildprivat.jpg')}
             style={{
               marginTop: 15,
               width: screenWidth-32,

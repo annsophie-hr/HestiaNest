@@ -13,9 +13,8 @@ export default function RecipeDetailScreen() {
   const [error, setError] = useState<string | null>(null);
 
   // Planner state moved to main component
-
   const [planner, setPlanner] = useState<any[]>([]); // Added type for clarity
-  const [servings, setServings] = useState('4'); // Keep servings as string for TextInput
+  const [servings, setServings] = useState<string>(''); // State for servings input
 
   // Add these derived variables to check if recipe is already in planner
   const existingEntry = planner.find((item: any) => item.recipeId === id);
@@ -48,12 +47,22 @@ export default function RecipeDetailScreen() {
       });
   }, [id]);
 
+  // initialize typical servings data
+  useEffect(() => {
+    if (recipe) {
+      setServings(recipe.servings.toString());
+    }
+  }, [recipe]);
+
   // Update servings when planner changes (if planner state is ever updated)
   useEffect(() => {
     const entry = planner.find((item: any) => item.recipeId === id);
     if (entry) {
       setServings(entry.servings.toString());
     }
+    else if (recipe) {
+      setServings(recipe.servings.toString());
+    }//default from recipe
   }, [planner, id]);
 
 
