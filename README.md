@@ -33,6 +33,15 @@ Every week, the same struggle: figuring out what to cook, manually calculating i
 - **Database**: Supabase to store the recipes
 - **Platform**: iOS/Android/Web
 
+The React Native app is organized around a tab structure with four primary tabs: Cookbook, Planner, Index, and Search. In addition to these, there are dedicated screens for viewing a single recipe, adding new recipes, and displaying the generated shopping list.
+On the backend, several JSON-based routes handle data exchange. One key route processes selected recipes, applying serving-size multipliers to generate a consolidated shopping list. To ensure consistency, all ingredients are normalized to standard units, allowing quantities from multiple recipes to be aggregated. For better readability, a rounding mechanism is applied to integer quantities greater than one, and common base ingredients such as flour, salt, pepper, and water are automatically excluded from the generated list.
+The Single Recipe screen interacts with three endpoints:
+•	POST for creating new recipes,
+•	GET for retrieving recipe details, and
+•	PUT for updating existing recipes.
+In the Planner view, users can select a specific date for adding meals. Once a date is chosen, the app navigates to the Cookbook, passing the selected date as context. From there, a recipe can be chosen, servings adjusted, and, upon pressing Add to Planner, the app sends the recipe ID, servings, and date back to the Planner, where it is stored under the correct day.
+
+
 
 
 ## Features
